@@ -1,0 +1,586 @@
+CREATE DATABASE  IF NOT EXISTS `supercan` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `supercan`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+--
+-- Host: localhost    Database: supercan
+-- ------------------------------------------------------
+-- Server version	8.0.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tb_accesorios`
+--
+
+DROP TABLE IF EXISTS `tb_accesorios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_accesorios` (
+  `codigoA` varchar(5) NOT NULL,
+  `marca` varchar(15) NOT NULL,
+  `precio` decimal(8,2) NOT NULL,
+  `idAccesorio` int NOT NULL,
+  `stock` int NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`codigoA`),
+  KEY `idAccesorio_idx` (`idAccesorio`),
+  CONSTRAINT `idAccesorio` FOREIGN KEY (`idAccesorio`) REFERENCES `tb_tipoaccesorio` (`idAccesorio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_accesorios`
+--
+
+LOCK TABLES `tb_accesorios` WRITE;
+/*!40000 ALTER TABLE `tb_accesorios` DISABLE KEYS */;
+INSERT INTO `tb_accesorios` VALUES ('AC001','Coastal',76.90,1,10,'1\" K9 Brites Harness Cyn-Canyon 38'),('AC002','Coastal',76.90,1,10,'1\" K9 Brites Harness Lak-Lake 38'),('AC003','Coastal',76.90,1,10,'1\" K9 Brites Harness Mtn-Mountain 38'),('AC004','Mpets',49.90,2,10,'Crock Stainless Steel Bowl - XXL'),('AC005','Mpets',39.90,2,10,'Dog Travel Bottle Turquesa 700 Ml'),('AC006','Mpets',39.90,2,10,'Dog Travel Bottle Verde 700 Ml'),('AC007','Zoomba',125.90,3,10,'Cama Invierno Carnero - Manada Rojo'),('AC008','Zoomba',275.90,3,10,'Cama Invierno Orthopet Rojo'),('AC009','Pet dogs lover',110.90,3,10,'Cama Moises Antialergica - Verde Agua /Lila'),('AC010','Mpets',35.90,4,10,'Alphonso Squeaker - 43 X 20 X 15'),('AC011','Kong',64.90,4,10,'Beezles Tug Assorted Lg'),('AC012','Mpets',31.90,4,10,'Bloom Ball - Mondrian Series'),('AC013','Claws & paws',42.10,5,10,'Transportador De Tela Talla 2 Negro'),('AC014','Claws & paws',42.10,5,10,'Transportador De Tela Talla 2 Rojo'),('AC015','Claws & paws',42.10,5,10,'Transportador De Tela Talla 2 Verde');
+/*!40000 ALTER TABLE `tb_accesorios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_alimento`
+--
+
+DROP TABLE IF EXISTS `tb_alimento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_alimento` (
+  `codigoAL` varchar(4) NOT NULL,
+  `marca` varchar(15) NOT NULL,
+  `precio` decimal(8,2) NOT NULL,
+  `peso` decimal(8,2) NOT NULL,
+  `etapa_vida` varchar(15) NOT NULL,
+  `idAlimento` int NOT NULL,
+  `stock` int NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`codigoAL`),
+  KEY `idAlimento_idx` (`idAlimento`),
+  CONSTRAINT `idAlimento` FOREIGN KEY (`idAlimento`) REFERENCES `tb_tipoalimento` (`idAlimento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_alimento`
+--
+
+LOCK TABLES `tb_alimento` WRITE;
+/*!40000 ALTER TABLE `tb_alimento` DISABLE KEYS */;
+INSERT INTO `tb_alimento` VALUES ('A001','Ricocan',13.90,1.00,'adulto',1,10,'Ricocan adulto Multisabores'),('A002','Ricocan',34.90,3.00,'cachorro',1,6,'Ricocan cordero y cereales'),('A003','Pro plan',17.90,0.37,'adulto',2,11,'Pro plan carne y arroz'),('A004','Pro plan',17.90,0.37,'adulto',2,7,'Pro plan salmón y arroz'),('A005','Advance',164.90,3.00,'todas',3,5,'Dieta para problemas articulares'),('A006','Equilibrio',79.90,2.00,'todas',3,7,'veterinary dog cardiac-CA-cardiaco'),('A007','Barker',20.90,1.00,'todas',4,4,'Barker carne de res 20 hamburguesas'),('A008','Barker',21.90,1.00,'todas',4,3,'Barker codorniz 20 hamburguesas'),('A009','Barker',19.90,0.10,'todas',5,10,'Barker bites Bazo de Res'),('A010','Barker',19.90,0.10,'todas',5,12,'Barker bites Higado de Res'),('A011','1st choice',399.90,3.00,'adulto',1,7,'1st choice-Cordero y arroz'),('A012','Dog Chow',10.90,3.00,'adulto',2,4,'Dog chow festival de trozo de pollo'),('A013','Equilibrio',74.90,2.00,'todas',3,7,'Equilibrio veterinary Dog Renal'),('A014','Hant',21.90,3.00,'todas',4,7,'Hant cordero'),('A015','Canbo',17.00,0.20,'adulto',5,4,'Canbo snack biscuits de cordero');
+/*!40000 ALTER TABLE `tb_alimento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_cab_boleta`
+--
+
+DROP TABLE IF EXISTS `tb_cab_boleta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_cab_boleta` (
+  `num_bol` char(5) NOT NULL,
+  `fch_bol` date DEFAULT NULL,
+  `cod_cliente` int NOT NULL,
+  PRIMARY KEY (`num_bol`),
+  KEY `cod_cliente` (`cod_cliente`),
+  CONSTRAINT `tb_cab_boleta_ibfk_1` FOREIGN KEY (`cod_cliente`) REFERENCES `tb_usuario` (`codigoU`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_cab_boleta`
+--
+
+LOCK TABLES `tb_cab_boleta` WRITE;
+/*!40000 ALTER TABLE `tb_cab_boleta` DISABLE KEYS */;
+INSERT INTO `tb_cab_boleta` VALUES ('B0001','2022-11-16',1),('B0002','2022-11-16',1),('B0003','2022-11-16',1),('B0004','2022-11-16',1),('B0005','2022-11-16',1),('B0006','2022-11-16',1),('B0007','2022-11-16',1),('B0008','2022-11-17',1),('B0009','2022-11-17',1),('B0010','2022-11-17',1),('B0011','2022-11-17',1),('B0012','2022-11-17',1),('B0013','2022-11-17',1),('B0014','2022-11-17',1),('B0015','2022-11-17',1),('B0016','2022-11-17',1),('B0017','2022-11-17',1),('B0018','2022-11-17',1),('B0019','2022-11-17',1),('B0020','2022-11-17',1),('B0021','2022-11-18',1),('B0022','2022-11-18',1),('B0023','2022-11-18',1),('B0024','2022-11-18',1),('B0025','2022-11-18',1),('B0026','2022-11-18',1),('B0027','2022-11-19',1),('B0028','2022-11-19',1),('B0029','2022-11-19',1),('B0030','2022-11-19',1),('B0031','2022-11-19',1),('B0032','2022-11-19',1),('B0033','2022-11-19',2),('B0034','2022-11-19',2),('B0035','2022-11-19',1),('B0036','2022-11-19',1),('B0037','2022-11-19',1),('B0038','2022-11-20',1),('B0039','2022-11-23',1),('B0040','2022-11-23',1),('B0041','2022-11-23',1),('B0042','2022-11-24',1),('B0043','2022-11-24',1),('B0044','2022-11-24',1);
+/*!40000 ALTER TABLE `tb_cab_boleta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_cliente`
+--
+
+DROP TABLE IF EXISTS `tb_cliente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_cliente` (
+  `idCliente` int NOT NULL,
+  `nombre` varchar(15) NOT NULL,
+  `apellido` varchar(25) NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `correo` varchar(25) NOT NULL,
+  `telefono` int NOT NULL,
+  PRIMARY KEY (`idCliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_cliente`
+--
+
+LOCK TABLES `tb_cliente` WRITE;
+/*!40000 ALTER TABLE `tb_cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_det_boleta`
+--
+
+DROP TABLE IF EXISTS `tb_det_boleta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_det_boleta` (
+  `num_bol` char(5) NOT NULL,
+  `codigoAL` varchar(4) DEFAULT NULL,
+  `codigoH` varchar(4) DEFAULT NULL,
+  `codigoA` varchar(5) DEFAULT NULL,
+  `cantidad` int DEFAULT NULL,
+  `preciovta` decimal(8,2) DEFAULT NULL,
+  PRIMARY KEY (`num_bol`),
+  KEY `codigoAL_idx` (`codigoAL`),
+  KEY `codigoH_idx` (`codigoH`),
+  KEY `codigoA_idx` (`codigoA`),
+  CONSTRAINT `codigoA` FOREIGN KEY (`codigoA`) REFERENCES `tb_accesorios` (`codigoA`),
+  CONSTRAINT `codigoAL` FOREIGN KEY (`codigoAL`) REFERENCES `tb_alimento` (`codigoAL`),
+  CONSTRAINT `codigoH` FOREIGN KEY (`codigoH`) REFERENCES `tb_higiene` (`codigoH`),
+  CONSTRAINT `tb_det_boleta_ibfk_1` FOREIGN KEY (`num_bol`) REFERENCES `tb_cab_boleta` (`num_bol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_det_boleta`
+--
+
+LOCK TABLES `tb_det_boleta` WRITE;
+/*!40000 ALTER TABLE `tb_det_boleta` DISABLE KEYS */;
+INSERT INTO `tb_det_boleta` VALUES ('B0001','A003',NULL,NULL,1,17.00),('B0003','A002',NULL,NULL,1,34.00),('B0004',NULL,'H001',NULL,1,25.40),('B0005',NULL,'H002',NULL,1,46.90),('B0006',NULL,'H002',NULL,1,46.90),('B0007',NULL,'H003',NULL,1,52.90),('B0008',NULL,NULL,NULL,1,164.00),('B0010',NULL,NULL,NULL,1,39.90),('B0012',NULL,NULL,NULL,1,21.00),('B0014','A003',NULL,NULL,1,17.00),('B0016','A010',NULL,NULL,1,19.00),('B0018',NULL,'H005',NULL,1,40.90),('B0019','A007',NULL,NULL,1,20.00),('B0020','A014',NULL,NULL,1,21.00),('B0021','A006',NULL,NULL,1,79.00),('B0022',NULL,'H005',NULL,1,40.90),('B0023','A001',NULL,NULL,1,13.00),('B0025',NULL,'H005',NULL,1,40.90),('B0026',NULL,NULL,'AC002',1,76.90),('B0027','A015',NULL,NULL,1,17.00),('B0028',NULL,NULL,'AC002',1,76.90),('B0029','A015',NULL,NULL,1,76.90),('B0030',NULL,'H011',NULL,1,64.90),('B0031','A010',NULL,NULL,1,19.00),('B0032',NULL,'H007',NULL,1,70.90),('B0033','A014',NULL,NULL,1,21.00),('B0034','A007',NULL,NULL,1,20.00),('B0035','A004',NULL,NULL,1,17.00),('B0036','A012',NULL,NULL,1,10.00),('B0037','A003',NULL,NULL,1,17.00),('B0038',NULL,NULL,'AC002',2,76.90),('B0039','A008',NULL,NULL,1,21.00),('B0040','A013',NULL,NULL,2,74.00),('B0041','A009',NULL,NULL,2,19.00),('B0042','A001',NULL,NULL,1,13.00),('B0043','A001',NULL,NULL,1,13.00),('B0044','A014',NULL,NULL,1,21.00);
+/*!40000 ALTER TABLE `tb_det_boleta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_higiene`
+--
+
+DROP TABLE IF EXISTS `tb_higiene`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_higiene` (
+  `codigoH` varchar(4) NOT NULL,
+  `marca` varchar(15) NOT NULL,
+  `precio` decimal(8,2) NOT NULL,
+  `idHigiene` int NOT NULL,
+  `stock` int NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`codigoH`),
+  KEY `IdHigiene_idx` (`idHigiene`),
+  CONSTRAINT `IdHigiene` FOREIGN KEY (`idHigiene`) REFERENCES `tb_tipohigiene` (`idHigiene`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_higiene`
+--
+
+LOCK TABLES `tb_higiene` WRITE;
+/*!40000 ALTER TABLE `tb_higiene` DISABLE KEYS */;
+INSERT INTO `tb_higiene` VALUES ('H001','claws & paws',25.40,1,9,'Antipulgas/Garrapatas C&PX260ML'),('H002','Advantix',46.90,1,8,'Bayer Advantix 0.4ml 0 - 4Kg'),('H003','Advantix',52.90,1,9,'Bayer Advantix 2.5ml 10 - 25Kg'),('H004','Dermapet',31.90,2,10,'Dermapet Groom Pelo Largo X250ml'),('H005','Dermapet',40.90,2,10,'Dermapet Groom Styling Conditioner X250ml'),('H006','Dermapet',33.90,2,10,'Dermapet Groom Voluminizante X250ml'),('H007','ECA',70.90,3,10,'Antibacterial Ecaderm-1 Spray x 500ml'),('H008','Love',61.90,3,10,'Antibacteriano con esteriides love x10ml'),('H009','Apoquiel',11.90,3,10,'Apoquel x 16 MG (C: Caja/V: Unidad)'),('H010','Mpets',24.90,4,10,'Dental spray'),('H011','Gabrica',64.90,4,10,'Gabrica Limpieza Bucal Blanqueador-237ml'),('H012','Gabrica',81.90,4,10,'Gabrica Dental Fresh Orig Dog 17oz'),('H013','Mpets',9.90,5,10,'Pet Cleaning Wipes 100% Bamboo'),('H014','Mpets',9.90,5,10,'Pet Cleaning Wipes Avocado 15'),('H015','Mpets',9.90,5,10,'Pet Cleaning Wipes Coconut 15');
+/*!40000 ALTER TABLE `tb_higiene` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_producto`
+--
+
+DROP TABLE IF EXISTS `tb_producto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_producto` (
+  `codigoH` varchar(4) DEFAULT NULL,
+  `codigoA` varchar(5) DEFAULT NULL,
+  `codigoAL` varchar(4) DEFAULT NULL,
+  `idProducto` int NOT NULL,
+  `codigoProv` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`idProducto`),
+  KEY `codigoAlimentos_idx` (`codigoAL`),
+  KEY `codigoAccesorios_idx` (`codigoA`),
+  KEY `codigoHigiene_idx` (`codigoH`),
+  KEY `codigoProv_idx` (`codigoProv`),
+  CONSTRAINT `codigoAccesorios` FOREIGN KEY (`codigoA`) REFERENCES `tb_accesorios` (`codigoA`),
+  CONSTRAINT `codigoAlimentos` FOREIGN KEY (`codigoAL`) REFERENCES `tb_alimento` (`codigoAL`),
+  CONSTRAINT `codigoHigiene` FOREIGN KEY (`codigoH`) REFERENCES `tb_higiene` (`codigoH`),
+  CONSTRAINT `codigoProv` FOREIGN KEY (`codigoProv`) REFERENCES `tb_proveedor` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_producto`
+--
+
+LOCK TABLES `tb_producto` WRITE;
+/*!40000 ALTER TABLE `tb_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_producto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_proveedor`
+--
+
+DROP TABLE IF EXISTS `tb_proveedor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_proveedor` (
+  `codigo` varchar(5) NOT NULL,
+  `ruc` char(11) NOT NULL,
+  `razon_social` varchar(45) NOT NULL,
+  `telefono` char(9) NOT NULL,
+  `email` varchar(25) NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `departamento` varchar(25) NOT NULL,
+  `distrito` varchar(25) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_proveedor`
+--
+
+LOCK TABLES `tb_proveedor` WRITE;
+/*!40000 ALTER TABLE `tb_proveedor` DISABLE KEYS */;
+INSERT INTO `tb_proveedor` VALUES ('PV001','12002365412','claws & paws','977452123','clawsPaws1297@gmail.com','181 Av. Dos de Mayo','Lima','San isidro'),('PV002','21002456545','Advantix','965215423','Advantix2196@gmail.com','789 Jr. Teodoro Cárdenas','Lima','Lima'),('PV003','20315485421','Dermapet','974458123','Dermapetzig@gmail.com','120 C. José Domingo Orué','Lima','Miraflores'),('PV004','12540054588','ECA','974216546','ECASUpp@gmail.com','2398 Auxiliar Avenida Nicolás Arriola','Lima','San Luis'),('PV005','12852110085','Love','953215452','Lovedog@gmail.com','1021 Carr. Central','Lima','ATE'),('PV006','18744582265','Apoquiel','987442165','Apo344@gmail.com','154 Francisco Cornejo','Lima','Los olivos'),('PV007','22487005589','Mpets','943213635','Mpets2341@gmail.com','Av. Sta. Fe','Lima','San Martin de porres'),('PV008','20025004872','Gabrica','963115445','Gabricasupp@gmail.com','Av. Mariano Condorcanqui','Lima','Carabayllo'),('PV009','12005822871','Coastal','942121442','Coastal789@gmail.com','1318 Av Retablo','Lima','Comas'),('PV010','23325100575','Zoomba','963325510','Zoombabomba@gmail.com','803 Av. Nicolás Ayllón','Lima','ATE'),('PV011','20114587002','Pet dogs lover','965477000','Pet_dogslover@gmail.com','677 San Borja Sur','Lima','San Borja'),('PV012','12510285428','Kong','965402480','Kongking@gmail.com','1745 Av. 28 de Julio','Lima','La victoria'),('PV013','12420522288','Ricocan','965454100','Ricocanbest@gmail.com','245 Cuzco','Lima','Callao'),('PV014','23005547888','Pro plan','920354514','Proplancalidad@gmail.com','3791 Av. Gerardo Unger','Lima','Indepencia'),('PV015','23652114520','Advance','931005415','Advanceroot@gmail.com','309 Jirón Ismael Bielich Flores','Lima','Santiago de Surco'),('PV016','20012565446','Equilibrio','932005415','Equilibrio785@gmail.com','819 Jirón Carabaya','Lima','Lima'),('PV017','23652001887','Barker','905415445','Barker_784@gmail.com','Ca. Dr. Carlos E. Ferreyros U.','Lima','San Borja'),('PV018','12035254108','1st choice','921184870','1st_choice@gmail.com','1128 Montezuma','Lima','Callao'),('PV019','15548778125','Dog Chow','932054564','Dog_Chow@gmail.com','589 Av. Las Gaviotas','Lima','Chorillos'),('PV020','21287998521','Hant','905215454','Hant_oficial@gmail.com','155 La Capitana','Lima','Lurigancho-Chosica'),('PV021','21035451968','Canbo','901541548','Canbobambo78@gmail.com','1186 Av. Ferrocarril','Lima','El Agustino');
+/*!40000 ALTER TABLE `tb_proveedor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_tipoaccesorio`
+--
+
+DROP TABLE IF EXISTS `tb_tipoaccesorio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_tipoaccesorio` (
+  `idAccesorio` int NOT NULL,
+  `descripcionT` varchar(25) NOT NULL,
+  PRIMARY KEY (`idAccesorio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_tipoaccesorio`
+--
+
+LOCK TABLES `tb_tipoaccesorio` WRITE;
+/*!40000 ALTER TABLE `tb_tipoaccesorio` DISABLE KEYS */;
+INSERT INTO `tb_tipoaccesorio` VALUES (1,'Correas y arneses'),(2,'Platos y bebederos'),(3,'Camas'),(4,'Juguetes'),(5,'Kennels');
+/*!40000 ALTER TABLE `tb_tipoaccesorio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_tipoalimento`
+--
+
+DROP TABLE IF EXISTS `tb_tipoalimento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_tipoalimento` (
+  `idAlimento` int NOT NULL,
+  `descripcionT` varchar(45) NOT NULL,
+  PRIMARY KEY (`idAlimento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_tipoalimento`
+--
+
+LOCK TABLES `tb_tipoalimento` WRITE;
+/*!40000 ALTER TABLE `tb_tipoalimento` DISABLE KEYS */;
+INSERT INTO `tb_tipoalimento` VALUES (1,'Alimento seco'),(2,'Alimento Humedo'),(3,'Alimento Medicado'),(4,'Alimento BARF'),(5,'Snacks');
+/*!40000 ALTER TABLE `tb_tipoalimento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_tipohigiene`
+--
+
+DROP TABLE IF EXISTS `tb_tipohigiene`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_tipohigiene` (
+  `idHigiene` int NOT NULL,
+  `descripcionT` varchar(45) NOT NULL,
+  PRIMARY KEY (`idHigiene`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_tipohigiene`
+--
+
+LOCK TABLES `tb_tipohigiene` WRITE;
+/*!40000 ALTER TABLE `tb_tipohigiene` DISABLE KEYS */;
+INSERT INTO `tb_tipohigiene` VALUES (1,'Antipulgas'),(2,'shampoo'),(3,'farmacos'),(4,'cuidado oral'),(5,'paños humedos');
+/*!40000 ALTER TABLE `tb_tipohigiene` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_tipousuario`
+--
+
+DROP TABLE IF EXISTS `tb_tipousuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_tipousuario` (
+  `codigoTipoUsuario` int NOT NULL,
+  `descripcionUsuario` varchar(45) NOT NULL,
+  PRIMARY KEY (`codigoTipoUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_tipousuario`
+--
+
+LOCK TABLES `tb_tipousuario` WRITE;
+/*!40000 ALTER TABLE `tb_tipousuario` DISABLE KEYS */;
+INSERT INTO `tb_tipousuario` VALUES (1,'administrador'),(2,'cliente');
+/*!40000 ALTER TABLE `tb_tipousuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_usuario`
+--
+
+DROP TABLE IF EXISTS `tb_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_usuario` (
+  `codigoU` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(15) NOT NULL,
+  `apellido` varchar(25) NOT NULL,
+  `dni` char(8) NOT NULL,
+  `usuario` char(45) NOT NULL,
+  `contraseña` char(5) NOT NULL,
+  `correo` varchar(25) NOT NULL,
+  `codigoTipoUsuario` int NOT NULL,
+  PRIMARY KEY (`codigoU`),
+  KEY `codigoTUsuario_idx` (`codigoTipoUsuario`),
+  CONSTRAINT `codigoTUsuario` FOREIGN KEY (`codigoTipoUsuario`) REFERENCES `tb_tipousuario` (`codigoTipoUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_usuario`
+--
+
+LOCK TABLES `tb_usuario` WRITE;
+/*!40000 ALTER TABLE `tb_usuario` DISABLE KEYS */;
+INSERT INTO `tb_usuario` VALUES (1,'jordi','cancho pujaico','74425632','jordiAdmin','10001','jordi48@gmail.com',1),(2,'erick','sanzhez romero','78456985','romerosein','10002','roma33@gmail.com',2),(7,'juan','Perez Gomez','74485785','perez34','10003','perez34@gmail.com',2),(8,'karina','perez delgado','74485632','kari','1004','kari@gmail.com',2),(9,'jose','medrano quispe','75563125','josesito','10005','jose64@gmail.com',2),(10,'pablo','sanchez rivera','78565123','pablito','10006','pablito45@gmail.com',2);
+/*!40000 ALTER TABLE `tb_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_venta`
+--
+
+DROP TABLE IF EXISTS `tb_venta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_venta` (
+  `idVenta` int NOT NULL,
+  `fecha` date NOT NULL,
+  `idCliente` int NOT NULL,
+  `idProducto` int NOT NULL,
+  `codigoU` int DEFAULT NULL,
+  PRIMARY KEY (`idVenta`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_venta`
+--
+
+LOCK TABLES `tb_venta` WRITE;
+/*!40000 ALTER TABLE `tb_venta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_venta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'supercan'
+--
+
+--
+-- Dumping routines for database 'supercan'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `cargar_cbo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cargar_cbo`()
+SELECT descripcionT as 'Tipo' FROM tb_tipoalimento 
+		UNION
+		SELECT descripcionT as 'Tipo' FROM tb_tipoaccesorio 
+		UNION
+		SELECT descripcionT as 'Tipo' FROM tb_tipohigiene
+    ORDER BY Tipo ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `consulta_fecha` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consulta_fecha`(fch_bol DATE)
+SELECT * FROM (
+	SELECT H.descripcion, H.precio, DB.cantidad, TH.descripcionT AS 'Tipo', CB.fch_bol
+		FROM tb_higiene H 
+			INNER JOIN tb_det_boleta DB ON H.codigoH = DB.codigoH 
+			INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            INNER JOIN tb_tipohigiene TH ON TH.idHigiene = H.idHigiene
+	UNION 
+	SELECT AL.descripcion, AL.precio, DB.cantidad, TAL.descripcionT AS 'Tipo', CB.fch_bol
+		FROM tb_alimento AL 
+			INNER JOIN tb_det_boleta DB ON AL.codigoAL = DB.codigoAL 
+			INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            INNER JOIN tb_tipoalimento TAL ON TAL.idAlimento = AL.idAlimento
+	UNION
+	SELECT AC.descripcion, AC.precio, DB.cantidad, TAC.descripcionT AS 'Tipo', CB.fch_bol
+		FROM tb_accesorios AC 
+			INNER JOIN tb_det_boleta DB ON AC.codigoA = DB.codigoA 
+            INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            INNER JOIN tb_tipoaccesorio TAC ON TAC.idAccesorio = AC.idAccesorio
+    ) AS F
+WHERE F.fch_bol = fch_bol 
+ORDER BY descripcion, precio, cantidad, Tipo, fch_bol ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `consulta_producto` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consulta_producto`(descripcionT varchar(45))
+select * from (SELECT H.descripcion, H.precio, DB.cantidad, TH.descripcionT 
+		FROM tb_higiene H 
+			INNER JOIN tb_det_boleta DB ON H.codigoH = DB.codigoH 
+            INNER JOIN tb_tipohigiene TH ON TH.idHigiene = H.idHigiene
+       
+	UNION 
+	SELECT AL.descripcion, AL.precio, DB.cantidad, TAL.descripcionT 
+		FROM tb_alimento AL 
+			INNER JOIN tb_det_boleta DB ON AL.codigoAL = DB.codigoAL 
+            INNER JOIN tb_tipoalimento TAL ON TAL.idAlimento = AL.idAlimento
+            
+	UNION
+	SELECT AC.descripcion, AC.precio, DB.cantidad, TAC.descripcionT 
+		FROM tb_accesorios AC 
+			INNER JOIN tb_det_boleta DB ON AC.codigoA = DB.codigoA 
+            INNER JOIN tb_tipoaccesorio TAC ON TAC.idAccesorio = AC.idAccesorio
+            ) AS d
+	WHERE d.descripcionT = descripcionT
+	ORDER BY descripcion, precio, cantidad, descripcionT ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `reporte_ventas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `reporte_ventas`(descripcionT varchar(45))
+SELECT * FROM (
+	SELECT H.codigoH AS 'codigo',H.descripcion, H.precio, DB.cantidad, TH.descripcionT AS 'Tipo' 
+		FROM tb_higiene H 
+			INNER JOIN tb_det_boleta DB ON H.codigoH = DB.codigoH 
+			INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            		INNER JOIN tb_tipohigiene TH ON TH.idHigiene = H.idHigiene
+	UNION 
+	SELECT AL.codigoAL AS 'codigo',AL.descripcion, AL.precio, DB.cantidad, TAL.descripcionT AS 'Tipo' 
+		FROM tb_alimento AL 
+			INNER JOIN tb_det_boleta DB ON AL.codigoAL = DB.codigoAL 
+			INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            		INNER JOIN tb_tipoalimento TAL ON TAL.idAlimento = AL.idAlimento
+	UNION
+	SELECT AC.codigoA AS 'codigo',AC.descripcion, AC.precio, DB.cantidad, TAC.descripcionT AS 'Tipo' 
+		FROM tb_accesorios AC 
+			INNER JOIN tb_det_boleta DB ON AC.codigoA = DB.codigoA 
+            		INNER JOIN tb_cab_boleta CB ON CB.num_bol = DB.num_bol
+            		INNER JOIN tb_tipoaccesorio TAC ON TAC.idAccesorio = AC.idAccesorio 
+    ) AS F
+WHERE F.Tipo = descripcionT
+ORDER BY codigo, descripcion, precio, cantidad, Tipo ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `usp_validaAcceso` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_validaAcceso`(usr char(45), pas char(5))
+begin
+select * from tb_usuario where usuario = usr and contraseña = pas;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-11-27 23:38:15

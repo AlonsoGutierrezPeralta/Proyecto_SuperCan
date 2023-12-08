@@ -1,0 +1,205 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Pacifico&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+body{
+    background-image: url(../img/huellasfondo.jpg);
+}
+
+
+hr{
+    height: 1px;
+    border: none;
+    background: #7a7a7a;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+p,
+h1{
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+h1{
+    font-weight: normal;
+}
+
+/* banner*/
+.logo_main{
+    height: 200px;
+    padding: 40px;
+    background: #019CDE;
+    color: white;
+    cursor: default;
+    text-align: center;
+}
+
+
+.logo{
+    font-family: 'Pacifico';
+    font-size: 70px;
+}
+
+.banner{
+	margin-top: 30px;
+    width: 270px;
+    height: 95px;
+}
+
+
+
+
+
+
+.nav  {
+	
+    float: left;
+    width: 100%;
+    background: #222;
+    color: white;
+    padding: 0 20px;
+    transition: .3s ease all;
+    backface-visibility: hidden;
+    transform: translate(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    text-align: center;
+    z-index: 1000;
+    display: flow-root;
+    
+}
+
+.nav .item{
+	float:left;
+	
+}
+.nav .item2{
+	float:right;
+}
+
+.nav .wrap{
+    position: relative;
+    left: -150px;
+    transition: 0.4s ease all;
+}
+
+nav{
+	display:flow-root;
+   margin-left: 20%;
+	
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    
+}
+
+nav li {
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav a{
+    display: inline-block;
+    padding: 20px;
+    margin: 0;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease all;
+}
+
+nav button{
+	 display: block;
+    padding: 20px;
+    margin:0;
+    color: white;
+    background-color:#222;
+    text-decoration: none;
+    transition: 0.2s ease all;
+    border: 2px solid #222;
+    font-size:16px;
+}
+
+
+
+nav a:hover{
+    color: white;
+    background: #019CDE;
+    width: 100%;
+}
+
+nav button:hover{
+	  color: white;
+    background: #019CDE;
+    width: 100%;
+}
+
+body.nav_fixed .nav{
+    position: fixed;
+    top: 0;
+}
+
+body.nav_fixed .nav .wrap{
+    left: 0;
+}
+.imgredes {
+    display: inline-flex;
+    width: 150%;
+    margin-top: 30px;
+    justify-content: left;
+    align-items: baseline;
+}
+
+.imggm {
+    width: 71%;
+    height: 32px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav .desplegable a{
+	padding: 20px;
+	display: block;
+	font-family:'Open Sans';
+	font-size:16px;
+	text-decoration:none;
+	
+}
+
+.nav .desplegable{
+	display:none;
+	border:30px
+	
+	
+}
+
+
+.nav .item:hover .desplegable{
+	display:block;
+	
+	
+}
+
+.nav .item2:hover .desplegable{
+	display:block;
+	
+	
+}
+
+.nav ul ul{
+	display:none;
+	position:absolute;
+	background: #222;
+}
+
+
+

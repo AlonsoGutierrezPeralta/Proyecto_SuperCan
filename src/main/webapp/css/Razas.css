@@ -1,0 +1,204 @@
+@charset "ISO-8859-1";
+
+/*Encabezado*/
+header{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+header .titulo{
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+    background-color: rgb(250, 250, 250);
+    
+}
+header .titulo2{
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    background-color: rgb(250, 250, 250);
+}
+/*cuerpo*/
+/*--------------------------------------------------Bloque 1-------------------------------------------------*/
+.cuerpo{
+    width: 100%;
+}
+
+.block1{
+    width: 100%;
+    display: flex;
+    margin-top: 7%;
+    margin-bottom: 15%;
+    
+}
+
+.block1 .intro {
+    width: 50%;
+    margin-left: auto;
+    
+}
+
+.block1 .img {
+    margin-top: 2%;
+    border-radius: 20px;
+    margin-right: 17%;
+    border-bottom: 5px solid black;
+    
+    
+}
+.block1 .img .gran1{
+    border-radius: 20px;
+}
+.block1 .img p{
+    text-align: center;
+    padding: 7px;
+    background-color: #a9afaf;
+    border-radius: 20px;
+    width: 50%;  
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.block1 .img p:hover{
+    background: rgb(80, 80, 80);
+}
+.block1 .img p a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.block1 .intro h1{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(250, 250, 250);
+}
+
+.block1 .intro .intro1{
+    text-align: justify;
+    font-weight: bolder;
+    background-color: rgb(250, 250, 250);
+}
+
+.block1 .intro .intro2{
+    text-align: center;
+    font-weight: bolder;
+    background-color: rgb(250, 250, 250);
+}
+
+/*--------------------------------------------------Bloque 2-------------------------------------------------*/
+
+.block2{
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;
+
+}
+
+.block2 .intro {
+    width: 50%;
+    margin-right: auto;
+}
+
+.block2 .img {
+    margin-top: 2%;
+    border-radius: 20px;
+    margin-left: 15%;
+    border-bottom: 5px solid black;
+    
+}
+.block2 .img .gran1{
+    border-radius: 20px;
+}
+.block2 .img p{
+    text-align: center;
+    padding: 7px;
+    background-color: #a9afaf;
+    border-radius: 20px;
+    width: 50%;  
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.block2 .img p:hover{
+    background: rgb(80, 80, 80);
+}
+.block2 .img p a:hover{
+    color: rgb(255, 255, 255);
+}
+.block2 .intro h1{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(250, 250, 250);
+    font-weight: bold;
+}
+
+.block2 .intro .intro1{
+    text-align: justify;
+    background-color: rgb(250, 250, 250);
+    font-weight: bold;
+}
+
+.block2 .intro .intro2{
+    text-align: center;
+    background-color: rgb(250, 250, 250);
+    font-weight: bold;
+}
+
+/*--------------------------------------------------Bloque 3-------------------------------------------------*/
+
+
+.block3{
+    width: 100%;
+    display: flex;
+    margin-bottom: 15%;  
+}
+
+.block3 .intro {
+    width: 50%;
+    margin-left: auto;
+}
+
+.block3 .img {
+    margin-top: 2%;
+    border-radius: 20px;
+    margin-right: 17%;
+    border-bottom: 5px solid black;
+    
+    
+}
+.block3 .img .gran1{
+    border-radius: 20px;
+}
+.block3 .img p{
+    text-align: center;
+    padding: 7px;
+    background-color: #a9afaf;
+    border-radius: 20px;
+    width: 50%;  
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.block3 .img p:hover{
+    background: rgb(80, 80, 80);
+}
+.block3 .img p a:hover{
+    color: rgb(255, 255, 255);
+}
+.block3 .img p:hover{
+    color: white;
+}
+.block3 .intro h1{
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(250, 250, 250);
+}
+
+.block3 .intro .intro1{
+    text-align: justify;
+    background-color: rgb(250, 250, 250);
+    font-weight: bold;
+}
+
+.block3 .intro .intro2{
+    text-align: center;
+    background-color: rgb(250, 250, 250);
+    font-weight: bold;
+}

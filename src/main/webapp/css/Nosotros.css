@@ -1,0 +1,76 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Estonia&family=Open+Sans:wght@300&family=Pacifico&display=swap');
+
+
+/*Carrusel*/
+.carrusel{
+    position: relative;
+    z-index: 997;
+    height: 400px;
+}
+
+#slider-principal{
+    position: relative;
+    overflow: hidden;
+}
+
+#slidershow{
+    position: relative;
+   z-index:-1;
+    height: 300px;
+}
+
+#imgcab{
+    /*position : absolute;*/
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+/*SOBRE NOSOTROS*/
+.imgderecha{
+	width: 100%;
+	height: 100px;
+	margin: 0;
+}
+.main .cuerpo .caja_flotante_de .imgderecha .imgder{
+    padding: 1%;
+    border-radius: 40px;
+}
+
+
+.cuerpo {
+	top:100px;
+    overflow:hidden;  
+    min-height:100%;
+    background-size: cover;
+    width: 100%;
+    position:relative; 
+    padding: 60px 10px 110px 10px;
+}
+
+.nosotros{
+    font-weight: bold;
+    font-family: 'Comforter';
+    font-size: 75px;
+}
+
+.nosotros_txt{
+    font-family: 'Estonia';
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.main .cuerpo .caja_flotante_iz{
+    padding: 25px 20px 0px 10px;
+    float:left;
+    width: 65%;
+    text-align: center;
+
+}
+.main .cuerpo .caja_flotante_de{
+    float: left;
+    padding: 0px 20px 0px 35px; 
+    width: 35%;
+}
